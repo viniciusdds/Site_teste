@@ -21,9 +21,12 @@
                     <td>{{$info->descricao}}</td>
                     <td>{{$info->preco}}</td>
                     <td>
-                        <a href="{{asset('images/1589375052219hqdefault.jpg')}}" data-toggle="lightbox" data-title="Foto 1" data-gallery="gallery">
-                        </a>
-                        <a href="{{asset('images/1589375090284IMG-20190704-WA0012.jpg')}}" class="btn btn-app" data-toggle="lightbox" data-title="foto 2" data-gallery="gallery">
+                        @foreach ($fotos as $foto)
+                            <a href="{{asset("images/$foto->filename")}}" data-toggle="lightbox" data-title="" data-gallery="gallery">
+                            </a>
+                        @endforeach
+
+                        <a href="{{route('image/modal', $info->id)}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
                             <i class="fas fa-edit"></i> Visualizar
                         </a>
                     </td>
