@@ -32,11 +32,11 @@
                 <div class="col-sm-12">
             <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                 <thead>
-                    <tr role="row" style="text-align: center">
+                    <tr role="row" style="text-align: center;  background: #999; color: white;">
                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nome</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">E-mail</th>
                         {{-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Senha</th> --}}
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="3" aria-label="Engine version: activate to sort column ascending">Imagem</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="3" aria-label="Engine version: activate to sort column ascending">Ações</th>
                     </tr>
                 </thead>
             <tbody>

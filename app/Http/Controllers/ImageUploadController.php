@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class ImageUploadController extends Controller
 {
     public function fileCreate(){
-        return view('backend.product.listaproduto');
+        $data = Product::all();
+        return view('backend.product.listaproduto', compact('data'));
     }
 
     public function fileStore(Request $request){
