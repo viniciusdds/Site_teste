@@ -10,8 +10,15 @@ use Illuminate\Http\Request;
 class ImageUploadController extends Controller
 {
     public function fileCreate(){
-        $data = Product::all();
-        return view('backend.product.listaproduto', compact('data'));
+        // $data = Product::all();
+        $data = Product::select('product.id as id','product.nome AS nome', 'product.descricao AS descricao', 'product.preco AS preco')
+                    // ->leftJoin('image_uploads', 'product.id', '=', 'image_uploads.product_id')
+                    // ->groupBy('product.nome')
+                    ->get();
+
+        $images = ImageUpload::all();
+
+        return view('backend.product.listaproduto', compact('data','images'));
     }
 
     public function fileStore(Request $request){
@@ -41,8 +48,18 @@ class ImageUploadController extends Controller
 
     public function fileModal($id){
         $fotos = ImageUpload::where('product_id',$id)->get();
+        if(count(ImageUpload::where('product_id',$id)->get()) == 0 ){
+            $fotos = "";
+        }else{
+            $fotos = ImageUpload::where('product_id',$id)->get();
+        }
 
-        return view('backend.product.listaproduto', compact('fotos'));
+        return response()->json($fotos);
+       // $fotos = DB::table('image_uploads')->where('product_id',$id)->get();
+        //$foto = $fotos->filename;
+
+       // return dd($fotos);
+       // return view('backend.product.listaproduto', compact('fotos'));
 
         //asset('images/1589375052219hqdefault.jpg');
 

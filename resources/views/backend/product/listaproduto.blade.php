@@ -21,14 +21,36 @@
                     <td>{{$info->descricao}}</td>
                     <td>{{$info->preco}}</td>
                     <td>
-                        @foreach ($fotos as $foto)
-                            <a href="{{asset("images/$foto->filename")}}" data-toggle="lightbox" data-title="" data-gallery="gallery">
-                            </a>
+
+
+                        @foreach ($images as $image)
+                            @if($info->id == $image->product_id)
+                                @if($image->id == 1)
+                                    <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
+                                        <i class="fas fa-edit"></i> Visualizar
+                                    </a>
+                                @else
+                                    <a href="{{asset("images/$image->filename")}}" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
+                                    </a>
+                                @endif
+                            @endif
                         @endforeach
 
-                        <a href="{{route('image/modal', $info->id)}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
-                            <i class="fas fa-edit"></i> Visualizar
-                        </a>
+                        {{-- @if(isset($images->product_id))
+                            certo
+                        @else
+                            errado
+                        @endif --}}
+                    {{-- @if($info->id == $images->product_id)
+                        @foreach ($images as $image)
+                            {{$image->filename}}
+                            <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
+                                <i class="fas fa-edit"></i> Visualizar
+                            </a>
+                        @endforeach
+                    @endif --}}
+
+
                     </td>
                 </tr>
              @endforeach
