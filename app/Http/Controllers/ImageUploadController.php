@@ -16,9 +16,21 @@ class ImageUploadController extends Controller
                     // ->groupBy('product.nome')
                     ->get();
 
+        // //$images = ImageUpload::all();
         $images = ImageUpload::all();
+        // $counts = ImageUpload::select("COUNT(image_uploads.product_id) AS product_id", "image_uploads.filename AS filename", "image_uploads.id AS id")
+        //                          ->groupBy("product_id")
+        //                          ->havingRaw("product_id > 1")
+        //                          ->toSql();
 
-        return view('backend.product.listaproduto', compact('data','images'));
+         $counts = ImageUpload::selectRaw("product_id, count(product_id), filename, id ")
+                                   ->groupBy("product_id")
+                                   ->havingRaw("product_id > 1")
+                                   ->get();
+
+        //dd($counts);
+
+        return view('backend.product.listaproduto', compact('data','images','counts'));
     }
 
     public function fileStore(Request $request){
@@ -44,6 +56,8 @@ class ImageUploadController extends Controller
             unlink($path);
         }
         return $filename;
+
+        //return dd($request->get('filename'));
     }
 
     public function fileModal($id){

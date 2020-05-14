@@ -1,6 +1,7 @@
 @extends('backend.layouts.main')
 
 @section('content')
+<meta name="_token" content="{{csrf_token()}}" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -12,9 +13,9 @@
 
     <form method="post" action="{{route('image/upload/store')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
     @csrf
-    <input type="hidden" name="id" value="{{$id}}">
+    <input type="hidden" name="id" id="id" value="{{$id}}">
     </form>
-<script type="text/javascript">
+    <script type="text/javascript">
         Dropzone.options.dropzone =
          {
             maxFilesize: 12,
@@ -55,6 +56,6 @@
             {
                return false;
             }
-};
-</script>
+    };
+    </script>
 @endsection

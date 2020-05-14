@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\ImageUpload;
 
 class ProductController extends Controller
 {
@@ -52,11 +53,32 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $updateProduct = Product::find($id);
+        $updateProduct->update([
+            'nome' => $request['nome'],
+            'descricao' => $request['descricao'],
+            'preco' => $request['preco']
+        ]);
+
+        return redirect()->route('product.index');
     }
 
     public function destroy($id)
     {
-        //
+        $data = Product::find($id);
+        $arquivo = ImageUpload::find($data->id);
+        $image = $arquivo->image;
+
+        $filepath = public_path('images/');
+        $imagepath = $filepath.$image;
+
+        if(file_exists($imagepath)){
+            @unlink($imagepath);
+        }
+
+        $arquivo->delete();
+        $data->delete();
+
+        return redirect()->route('personalcontact.index');
     }
 }

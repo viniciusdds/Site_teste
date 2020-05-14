@@ -22,17 +22,23 @@
                     <td>{{$info->preco}}</td>
                     <td>
 
-
+                        {{}}
                         @foreach ($images as $image)
+
                             @if($info->id == $image->product_id)
-                                @if($image->id == 1)
-                                    <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
-                                        <i class="fas fa-edit"></i> Visualizar
-                                    </a>
-                                @else
-                                    <a href="{{asset("images/$image->filename")}}" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
-                                    </a>
-                                @endif
+                                @foreach ($counts as $count)
+                                <input type="text" id="codigo" value="{{$image->id}}">
+                                    @if($image->id == $count->id)
+                                        {{$info->id}}
+
+                                        <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery">
+                                            <i class="fas fa-edit"></i> Visualizar
+                                        </a>
+                                    @else
+                                        <a href="{{asset("images/$image->filename")}}" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery">
+                                        </a>
+                                    @endif
+                                @endforeach
                             @endif
                         @endforeach
 
@@ -62,4 +68,5 @@
 
     </div>
   </div>
+
 @endsection

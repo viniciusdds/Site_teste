@@ -34,7 +34,7 @@ Route::resource('/admin/product', 'ProductController');
 
 Route::get('image/upload','ImageUploadController@fileCreate')->name('image/upload');
 Route::post('image/upload/store','ImageUploadController@fileStore')->name('image/upload/store');
-Route::post('image/delete','ImageUploadController@fileDestroy');
+Route::post('image/delete','ImageUploadController@fileDestroy')->name('image/delete');
 Route::get('image/modal/{id}','ImageUploadController@fileModal')->name('image/modal');
 
 
