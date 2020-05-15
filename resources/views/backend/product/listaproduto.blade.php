@@ -15,47 +15,34 @@
                 </tr>
             </thead>
         <tbody>
+
+
             @foreach ($data as $info)
                 <tr role="row" class="odd" style="text-align: center">
                     <td tabindex="0" class="sorting_1">{{$info->nome}}</td>
                     <td>{{$info->descricao}}</td>
                     <td>{{$info->preco}}</td>
                     <td>
+                        @php
+                          $id = 0;
+                        @endphp
 
-                        {{}}
                         @foreach ($images as $image)
 
                             @if($info->id == $image->product_id)
-                                @foreach ($counts as $count)
-                                <input type="text" id="codigo" value="{{$image->id}}">
-                                    @if($image->id == $count->id)
-                                        {{$info->id}}
-
-                                        <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery">
+                                @php($id++)
+                                    @if($id > 1)
+                                        <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery{{$info->nome}}">
                                             <i class="fas fa-edit"></i> Visualizar
                                         </a>
                                     @else
-                                        <a href="{{asset("images/$image->filename")}}" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery">
+                                        <a href="{{asset("images/$image->filename")}}" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery{{$info->nome}}">
                                         </a>
                                     @endif
-                                @endforeach
+                                @else
+                                    @php($id = 0)
                             @endif
                         @endforeach
-
-                        {{-- @if(isset($images->product_id))
-                            certo
-                        @else
-                            errado
-                        @endif --}}
-                    {{-- @if($info->id == $images->product_id)
-                        @foreach ($images as $image)
-                            {{$image->filename}}
-                            <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->id}}" data-gallery="gallery">
-                                <i class="fas fa-edit"></i> Visualizar
-                            </a>
-                        @endforeach
-                    @endif --}}
-
 
                     </td>
                 </tr>

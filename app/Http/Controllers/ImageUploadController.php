@@ -10,27 +10,19 @@ use Illuminate\Http\Request;
 class ImageUploadController extends Controller
 {
     public function fileCreate(){
-        // $data = Product::all();
         $data = Product::select('product.id as id','product.nome AS nome', 'product.descricao AS descricao', 'product.preco AS preco')
-                    // ->leftJoin('image_uploads', 'product.id', '=', 'image_uploads.product_id')
-                    // ->groupBy('product.nome')
                     ->get();
 
-        // //$images = ImageUpload::all();
         $images = ImageUpload::all();
-        // $counts = ImageUpload::select("COUNT(image_uploads.product_id) AS product_id", "image_uploads.filename AS filename", "image_uploads.id AS id")
-        //                          ->groupBy("product_id")
-        //                          ->havingRaw("product_id > 1")
-        //                          ->toSql();
 
-         $counts = ImageUpload::selectRaw("product_id, count(product_id), filename, id ")
+        $counts = ImageUpload::selectRaw("product_id, count(product_id), filename, id ")
                                    ->groupBy("product_id")
                                    ->havingRaw("product_id > 1")
                                    ->get();
 
         //dd($counts);
 
-        return view('backend.product.listaproduto', compact('data','images','counts'));
+        return view('backend.product.listaproduto', compact('data','images'));
     }
 
     public function fileStore(Request $request){
