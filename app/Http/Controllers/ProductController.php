@@ -66,19 +66,23 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $data = Product::find($id);
-        $arquivo = ImageUpload::find($data->id);
-        $image = $arquivo->image;
+        $arquivo = ImageUpload::where('product_id', $data->id)->get();
+        $count = $arquivo->count();
 
-        $filepath = public_path('images/');
-        $imagepath = $filepath.$image;
+        for($i=0; $i < $count; $i++){
+            $image = $arquivo[$i]['filename'];
+            $imagepath = public_path().'/images/'.$image;
 
-        if(file_exists($imagepath)){
-            @unlink($imagepath);
+            if(file_exists($imagepath)){
+                unlink($imagepath);
+            }
         }
 
-        $arquivo->delete();
+        $arquivo2 = ImageUpload::where('product_id', $data->id);
+        $arquivo2->delete();
         $data->delete();
 
-        return redirect()->route('personalcontact.index');
+        return redirect()->back();
+
     }
 }

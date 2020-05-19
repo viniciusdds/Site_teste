@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0dcbdc80776ca79d6311b8f92c5a4b5",
+    "content-hash": "80719528592bfe9d701d0191614c9e2f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1198,6 +1198,54 @@
                 "psr-3"
             ],
             "time": "2019-12-20T14:22:59+00:00"
+        },
+        {
+            "name": "muhamadrezaar/highcharts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/julles/laravel-highcharts.git",
+                "reference": "03622a5ffcfb1bc754316012247142c6bf650e87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/julles/laravel-highcharts/zipball/03622a5ffcfb1bc754316012247142c6bf650e87",
+                "reference": "03622a5ffcfb1bc754316012247142c6bf650e87",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RezaAr\\Highcharts\\Provider"
+                    ],
+                    "aliases": {
+                        "Chart": "RezaAr\\Highcharts\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RezaAr\\Highcharts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhamad Reza Abdul Rohim",
+                    "email": "reza.wikrama3@gmail.com"
+                }
+            ],
+            "description": "Laravel Highcarts Packages",
+            "keywords": [
+                "highcharts",
+                "laravel",
+                "packages"
+            ],
+            "time": "2019-10-01T18:16:15+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3473,6 +3521,48 @@
                 "php"
             ],
             "time": "2020-03-13T01:23:26+00:00"
+        },
+        {
+            "name": "zingchart/php_wrapper",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zingchart/ZingChart-PHP.git",
+                "reference": "576aa381599278ed40afd5489dd79fcc02aa0f28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zingchart/ZingChart-PHP/zipball/576aa381599278ed40afd5489dd79fcc02aa0f28",
+                "reference": "576aa381599278ed40afd5489dd79fcc02aa0f28",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ZingChart\\PHPWrapper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ZingChart",
+                    "email": "support@zingchart.com"
+                }
+            ],
+            "description": "PHP wrapper for ZingChart",
+            "homepage": "https://www.zingchart.com",
+            "keywords": [
+                "ZingChart",
+                "charts",
+                "graphs"
+            ],
+            "time": "2019-02-06T22:13:32+00:00"
         }
     ],
     "packages-dev": [
@@ -5466,7 +5556,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "muhamadrezaar/highcharts": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

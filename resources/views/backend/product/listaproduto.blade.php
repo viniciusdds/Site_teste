@@ -31,7 +31,7 @@
 
                             @if($info->id == $image->product_id)
                                 @php($id++)
-                                    @if($id > 1)
+                                    @if($id == 1)
                                         <a href="{{asset("images/$image->filename")}}" class="btn btn-app" data-toggle="lightbox" data-title="{{$info->nome}}" data-gallery="gallery{{$info->nome}}">
                                             <i class="fas fa-edit"></i> Visualizar
                                         </a>

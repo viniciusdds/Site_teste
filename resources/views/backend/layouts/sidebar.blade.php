@@ -49,6 +49,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{route('graph.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gráficos</p>
+                </a>
+            </li>
+
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           {{-- <li class="nav-item has-treeview menu-open">

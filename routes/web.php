@@ -37,4 +37,6 @@ Route::post('image/upload/store','ImageUploadController@fileStore')->name('image
 Route::post('image/delete','ImageUploadController@fileDestroy')->name('image/delete');
 Route::get('image/modal/{id}','ImageUploadController@fileModal')->name('image/modal');
 
+Route::get('graph/index', 'GraphController@index')->name('graph.index');
+
 
