@@ -10,20 +10,13 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<script type="text/javascript">
-    $(function() {
-      $('#container').highcharts({{json_encode($chartarray)}})
-    });
-</script>
 
-<div id="container"></div>
-
-{{-- {{json_encode($labels)}}
+{{str_replace('"',"'",json_encode($labels))}}
 {{json_encode($values)}}
 {{json_encode($weeks)}}
 
 <script type="text/javascript">
-    // var labels =  {{ json_encode($labels) }};
+    //var labels =  {{ json_encode($labels) }};
     var values =  {{ json_encode($values) }};
     // var weeks =  {{ json_encode($weeks) }};
 
@@ -39,13 +32,14 @@
             }
         },
         title: {
-            text: 'Faturamento da Semana, 2019'
+            text: 'Faturamento da Semana'
         },
         subtitle: {
-            text: 'Source: codechief.org'
+            text: 'Ano 2020'
         },
          xAxis: {
-            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            //categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            categories:  <?php echo json_encode($labels) ?>
         },
         yAxis: {
             title: {
@@ -63,7 +57,11 @@
             }
         },
         series: [{
-            name: 'Qtd vendida',
+            name: 'Semana 1',
+            data: values
+        },
+        {
+            name: 'Semana 2',
             data: values
         }],
         responsive: {
@@ -81,5 +79,5 @@
             }]
         }
 });
-</script> --}}
+</script>
 @endsection
