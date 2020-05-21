@@ -10,7 +10,15 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-{{json_encode($labels)}}
+<script type="text/javascript">
+    $(function() {
+      $('#container').highcharts({{json_encode($chartarray)}})
+    });
+</script>
+
+<div id="container"></div>
+
+{{-- {{json_encode($labels)}}
 {{json_encode($values)}}
 {{json_encode($weeks)}}
 
@@ -73,5 +81,5 @@
             }]
         }
 });
-</script>
+</script> --}}
 @endsection
