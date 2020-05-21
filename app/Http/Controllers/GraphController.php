@@ -17,8 +17,13 @@ class GraphController extends Controller
 
     public function index()
     {
-        $values = $this->repository::select("values")
+        $values1 = $this->repository::select("values")
                     ->where('weeks', 'Semana 1')
+                    ->orderBy("created_at")
+                    ->pluck('values');
+
+        $values2 = $this->repository::select("values")
+                    ->where('weeks', 'Semana 2')
                     ->orderBy("created_at")
                     ->pluck('values');
 
@@ -27,12 +32,17 @@ class GraphController extends Controller
                     ->orderBy("created_at")
                     ->pluck('labels');
 
-        $weeks = $this->repository::select("weeks")
+        $weeks1 = $this->repository::select("weeks")
                     ->where('weeks', 'Semana 1')
                     ->groupBy("weeks")
                     ->pluck('weeks');
 
-        return view('backend.grafico.graph', compact('values','labels','weeks'));
+        $weeks2 = $this->repository::select("weeks")
+                    ->where('weeks', 'Semana 2')
+                    ->groupBy("weeks")
+                    ->pluck('weeks');
+
+        return view('backend.grafico.graph', compact('values1','values2','labels','weeks1','weeks2'));
 
 
     }
