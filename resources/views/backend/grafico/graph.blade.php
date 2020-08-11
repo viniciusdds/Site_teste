@@ -10,12 +10,12 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-
+<script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+<script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
 
 
 <script type="text/javascript">
-    //var labels =  {{ json_encode($labels) }};
+//     var labels =  {{ json_encode($labels) }};
     var values1 =  {{ json_encode($values1) }};
     var values2 =  {{ json_encode($values2) }};
 
@@ -42,7 +42,7 @@
         },
         yAxis: {
             title: {
-                text: 'Number of New Users'
+                text: 'Quantidades de Vendas'
             }
         },
         legend: {
@@ -78,41 +78,69 @@
             }]
         }
 });
-</script>
 
+// var values1 =  {{ json_encode($values1) }};
+// var values2 =  {{ json_encode($values2) }};
 
-// <script>
-//     Highcharts.chart('container', {
+// Highcharts.chart('container', {
 //     chart: {
 //         type: 'cylinder',
 //         options3d: {
 //             enabled: true,
 //             alpha: 15,
-//             beta: 10,
-//             depth: 50,
-//             viewDistance: 25
+//             beta: 15,
+//             viewDistance: 25,
+//             depth: 40
 //         }
 //     },
+
 //     title: {
-//         text: "Faturamento Semanal"
+//         text: 'Total fruit consumption, grouped by gender'
 //     },
-//     plotOptions: {
-//         series: {
-//             depth: 25,
-//             colorByPoint: true
+
+//     xAxis: {
+//         categories: <?php echo json_encode($labels) ?>,
+//         labels: {
+//             skew3d: true,
+//             style: {
+//                 fontSize: '16px'
+//             }
 //         }
 //     },
-//     xAxis: {
-//             //categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-//             categories: // <?php echo json_encode($labels) ?>
+
+//     yAxis: {
+//         allowDecimals: false,
+//         min: 0,
+//         title: {
+//             text: 'Number of fruits',
+//             skew3d: true
+//         }
 //     },
+
+//     tooltip: {
+//         headerFormat: '<b>{point.key}</b><br>',
+//         pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+//     },
+
+//     plotOptions: {
+//         column: {
+//             stacking: 'normal',
+//             depth: 40
+//         }
+//     },
+
 //     series: [{
-//         //data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-//         data: values,
-//         name: // <?php echo json_encode($weeks1) ?>,
-//         showInLegend: false
+//         name: <?php echo json_encode($weeks1) ?>,
+//         data: values1,
+//         stack: 'male'
+//     }, {
+//         name: <?php echo json_encode($weeks2) ?>,
+//         data: values2,
+//         stack: 'male'
 //     }]
 // });
-// </script>
+
+
+</script>
 
 @endsection
